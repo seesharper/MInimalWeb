@@ -2,15 +2,12 @@ using LightInject;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseLightInject().ConfigureContainer<IServiceContainer>(c =>
-{
-    c.Register<Foo>();
-    Console.WriteLine("");
-});
+// Uncomment this line and it will not inject Foo anymore
+//builder.Host.UseLightInject();
 
-//builder.Services.AddTransient<Foo>();
+builder.Services.AddTransient<Foo>();
 var app = builder.Build();
-app.MapGet("/{number}", (Foo foo, int number) => $"Hello world {number}");
+app.MapGet("/", (Foo foo) => $"Hello world {foo.GetType()}");
 app.Run();
 
 
