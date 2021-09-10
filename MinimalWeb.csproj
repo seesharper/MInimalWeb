@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- <PackageReference Include="LightInject.Microsoft.Hosting" Version="1.2.5" /> -->
-    <PackageReference Include="DryIoc.Microsoft.DependencyInjection" Version="6.0.0-preview-01" />
+    <PackageReference Include="LightInject.Microsoft.Hosting" Version="1.2.5" />
+    <PackageReference Include="DryIoc.Microsoft.DependencyInjection" Version="6.0.0-preview-02" />
   </ItemGroup>
 
 </Project>
