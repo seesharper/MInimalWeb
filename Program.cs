@@ -1,18 +1,16 @@
-// using LightInject;
 using DryIoc;
 using DryIoc.Microsoft.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Uncomment this line and it will not inject Foo anymore
-// builder.Host.UseLightInject();
+var container = new Container(Rules.MicrosoftDependencyInjectionRules);
 
-// Uncomment to see both routes work:
-// var container = new Container(Rules.MicrosoftDependencyInjectionRules);
-// container.Register<Bar>();
-// builder.Host.UseServiceProviderFactory(new DryIocServiceProviderFactory(container));
+// register natively with DryIoc
+container.Register<Bar>();
 
+builder.Host.UseServiceProviderFactory(new DryIocServiceProviderFactory(container));
 
+// register via Services collection
 builder.Services.AddTransient<Foo>();
 
 var app = builder.Build();
